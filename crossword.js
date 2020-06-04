@@ -132,7 +132,7 @@ function Crossword(words_in, clues_in){
                         if(k=="across"){
                             //console.log( "Across "+ k);
                             across_tab.push({
-                                clue: position +"."+clues_in[index],
+                                clue: "<strong>"+position +"</strong>."+clues_in[index],
                                 answer: words_in[index],
                                 position: position,
                                 orientation: k,
@@ -144,7 +144,7 @@ function Crossword(words_in, clues_in){
                             //console.log( "Down "+ k);
 
                             down_tab.push({
-                                clue: position +"."+clues_in[index],
+                                clue: "<strong>"+position +"</strong>."+clues_in[index],
                                 answer: words_in[index],
                                 position: position,
                                 orientation: k,
