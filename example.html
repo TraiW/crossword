@@ -62,7 +62,7 @@ window.onload = function(){
         "Réseau d’acteurs économiques, fortement ancrés territorialement, composés, selon les contextes, principalement de très petites entreprises (TPE)", 
         "Mode de financement ou d’investissement alternatif, qui privilégie le lien social et de proximité. ", 
         "Méthode qui accélère la remise en cause des conventions qui brident la créativité des entreprises. Elle permet de faire émerger les visions nouvelles qui sont à l'origine des grandes innovations",
-        "telier partagé et ouvert au public, orienté vers la fabrication numérique",
+        "Atelier partagé et ouvert au public, orienté vers la fabrication numérique",
         "Structure d'accompagnement de porteurs de projets de création d'entreprises. En mettant à leur disposition les compétences et les outils indispensables au bon démarrage et au développement d’une entreprise innovante",
         "Représentation sous forme graphique d'un cheminement de pensée"
         
@@ -94,6 +94,8 @@ window.onload = function(){
     var legend = cw.getLegend(grid);
     var data = cw.getData(grid);
     console.log(JSON.stringify(data));
+
+    //console.log(JSON.stringify(data));
     //displaydata(data);
     document.getElementById("data").innerHTML = JSON.stringify(data)
     addLegendToPage(legend);

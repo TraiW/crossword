@@ -191,7 +191,7 @@
 						}
 
 						// while we're in here, add clues to DOM!
-						$('#' + puzz.data[i].orientation).append('<li tabindex="1" data-position="' + i + '">' + puzz.data[i].clue + '</li>'); 
+						$('#' + puzz.data[i].orientation).append('<li tabindex="' + i + '" data-position="' + i + '">' + puzz.data[i].clue + '</li>'); 
 					}				
 					
 					// Calculate rows/cols by finding max coords of each entry, then picking the highest
@@ -255,18 +255,20 @@
 								$(light)
 									.addClass('entry-' + (hasOffset ? x - positionOffset : x) + ' position-' + (x-1) )
 									.append('<input maxlength="1" val="" type="text" tabindex="-1" />');
+								
 							}
 						};
 						
 					};	
-					
+					var buffer;
+					//console.log(entryCount)
 					// Put entry number in first 'light' of each entry, skipping it if already present
-					for (var i=1, p = entryCount; i < p; ++i) {
+					for (var i=1, p = entryCount; i <= p; ++i) {
 						$groupedLights = $('.entry-' + i);
-						if(!$('.entry-' + i +':eq(0) span').length){
-							$groupedLights.eq(0)
-								.append('<span>' + puzz.data[i].position + '</span>');
-						}
+						//if(!$('.entry-' + i +':eq(0) span').length){
+							$groupedLights.eq(0).append('<span>' + i +'</span>');
+							
+						//}
 					}	
 					
 					util.highlightEntry();

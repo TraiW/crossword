@@ -68,7 +68,9 @@
 			font-weight: bold;
 			color: green;
 		}
-		
+		ol {
+  list-style-type: none;
+ }
 		.active,
 		.clues-active {
 			background-color: #ddd;
@@ -129,7 +131,6 @@
 		var legend = cw.getLegend(grid);
 		var data = cw.getData(grid);
 		console.log(data);
-		('#puzzle-wrapper').crossword(data);
 		// displaydata(data);
 		//addLegendToPage(legend);
 	};

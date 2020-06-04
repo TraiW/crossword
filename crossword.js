@@ -114,8 +114,11 @@ function Crossword(words_in, clues_in){
         var groups = {"across" : [], "down" : []};
         var position = 1;
 
-        var test=[] ;
-
+        var across_tab=[] ;
+        var down_tab=[] ;
+        var test=[];
+        var index_across = 1 ;
+        var index_down = 1 ;
         for(var r = 0; r < grid.length; r++){	
             for(var c = 0; c < grid[r].length; c++){
                 var cell = grid[r][c];
@@ -126,14 +129,30 @@ function Crossword(words_in, clues_in){
                     if(cell && cell[k] && cell[k]['is_start_of_word']){
                         var index = cell[k]['index'];
                         //console.log(" Word : "+words_in[index]+" clue : "+clues_in[index]+" -  direction : "+ k+" - position : "+ position+ " - x : "+ r +" - y : "+ c );
-                        test.push({
-                            clue: clues_in[index],
-                            answer: words_in[index],
-                            position: position,
-                            orientation: k,
-                            starty: r+1,
-                            startx: c+1
-                        })
+                        if(k=="across"){
+                            //console.log( "Across "+ k);
+                            across_tab.push({
+                                clue: position +"."+clues_in[index],
+                                answer: words_in[index],
+                                position: position,
+                                orientation: k,
+                                startx: c+1,
+                                starty: r+1
+                            })
+                            index_across++;
+                        }else{
+                            //console.log( "Down "+ k);
+
+                            down_tab.push({
+                                clue: position +"."+clues_in[index],
+                                answer: words_in[index],
+                                position: position,
+                                orientation: k,
+                                startx: c+1,
+                                starty: r+1
+                            })
+                            index_down++;
+                        }
                            
 
                         groups[k].push({"position" : position, "index" : index, "clue" : clues_in[index], "word" : words_in[index]});
@@ -144,6 +163,7 @@ function Crossword(words_in, clues_in){
                 if(increment_position) position++;
             }
         }
+        test = across_tab.concat(down_tab) 
         return test;
        
     }
@@ -173,8 +193,6 @@ function Crossword(words_in, clues_in){
         // starty: 1
         // }
         
-        // results = jArray.toString();
-        var test=[] ;
         
         // someData.map(function(item) {        
         //    employees.accounting.push({ 
@@ -196,16 +214,6 @@ function Crossword(words_in, clues_in){
                     // does a word start here? (make sure the cell isn't null, first)
                     if(cell && cell[k] && cell[k]['is_start_of_word']){
                         var index = cell[k]['index'];
-                        //console.log(" Word : "+words_in[index]+" clue : "+clues_in[index]+" -  direction : "+ k+" - position : "+ position+ " - x : "+ r +" - y : "+ c );
-                        test.push({
-                            clue: clues_in[index],
-                            answer: words_in[index],
-                            position: position,
-                            orientation: k,
-                            startx: r+1,
-                            starty: c+1
-                        })
-                           
 
                         groups[k].push({"position" : position, "index" : index, "clue" : clues_in[index], "word" : words_in[index]});
                         increment_position = true;
@@ -215,7 +223,8 @@ function Crossword(words_in, clues_in){
                 if(increment_position) position++;
             }
         }
-        var puzzleData = test;
+        // test = across_tab.concat(down_tab) 
+        // var puzzleData = test;
         //$('#puzzle-wrapper').crossword(puzzleData);
         //console.log(test)
        // results = jArray.toString();
